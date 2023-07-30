@@ -1,6 +1,6 @@
 import SortBy from "../../ui/SortBy";
-import Filter from "../../ui/Filter";
-import TableOperations from "../../ui/TableOperations";
+import { Filter } from "../../ui/filter/Filter.styles";
+import { TableOperations } from "../../ui/table/TableOperations.styles";
 
 const BookingTableOperations = () => {
   return (

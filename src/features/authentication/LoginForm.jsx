@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Button from "../../ui/Button";
-import Form from "../../ui/Form";
-import Input from "../../ui/Input";
-import FormRowVertical from "../../ui/FormRowVertical";
+import { Button } from "../../ui/button/Button.styles";
+import { Form } from "../../ui/form/Form.styles";
+import { Input } from "../../ui/input/Input.styles";
+import { FormRow } from "../../ui/form/FormRow.styles";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +12,10 @@ const LoginForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <FormRowVertical label='Email address'>
+      <FormRow
+        label='Email address'
+        orientation='vertical'
+      >
         <Input
           type='email'
           id='email'
@@ -21,8 +24,11 @@ const LoginForm = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-      </FormRowVertical>
-      <FormRowVertical label='Password'>
+      </FormRow>
+      <FormRow
+        label='Password'
+        orientation='vertical'
+      >
         <Input
           type='password'
           id='password'
@@ -30,10 +36,10 @@ const LoginForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-      </FormRowVertical>
-      <FormRowVertical>
+      </FormRow>
+      <FormRow orientation='vertical'>
         <Button size='large'>Login</Button>
-      </FormRowVertical>
+      </FormRow>
     </Form>
   );
 };

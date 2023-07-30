@@ -1,32 +1,9 @@
-import styled from "styled-components";
+import Pagination from "../../ui/pagination/Pagination.styles";
+import Spinner from "../../ui/spinner/Spinner.styles";
 import { useGuests } from "features/guests/useGuests";
-import Pagination from "ui/Pagination";
-import Spinner from "ui/Spinner";
 import GuestListItem from "./GuestListItem";
 
-const StyledGuestList = styled.div`
-  border: 1px solid var(--color-grey-200);
-  border-top: none;
-  border-bottom-left-radius: var(--border-radius-md);
-  border-bottom-right-radius: var(--border-radius-md);
-  overflow: hidden;
-  padding-top: 0.8rem;
-  transform: translateY(-4px);
-`;
-
-const List = styled.ul``;
-
-const PaginationContainer = styled.div`
-  border-top: 1px solid var(--color-grey-100);
-  background-color: var(--color-grey-50);
-  display: flex;
-  justify-content: center;
-  padding: 0.8rem;
-
-  &:not(:has(*)) {
-    display: none;
-  }
-`;
+import { List, PaginationContainer, StyledGuestList } from "./GuestList.styles";
 
 const GuestList = ({ onClick }) => {
   const { isLoading, guests, count } = useGuests();

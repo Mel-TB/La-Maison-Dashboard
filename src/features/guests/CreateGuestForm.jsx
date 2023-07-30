@@ -1,18 +1,13 @@
 import { useForm } from "react-hook-form";
 
-import { useCountries } from "hooks/useCountries";
-import { useCreateGuest } from "features/guests/useCreateGuest";
-import Spinner from "ui/Spinner";
-import Form from "ui/Form";
-import FormRow from "ui/FormRow";
-import Input from "ui/Input";
-import Select from "ui/Select";
-import Button from "ui/Button";
-import styled from "styled-components";
-
-const FormSelect = styled(Select)`
-  width: 100%;
-`;
+import { useCountries } from "../../hooks/useCountries";
+import { useCreateGuest } from "../../features/guests/useCreateGuest";
+import { Spinner } from "../../ui/spinner/Spinner.styles";
+import { Form } from "../../ui/form/Form.styles";
+import { FormRow } from "../../ui/form/FormRow.styles";
+import { Input } from "../../ui/input/Input.styles";
+import { Button } from "../../ui/button/Button.styles";
+import { FormSelect } from "./CreateGuestForm.styles";
 
 // With NEW modal
 // function CreateGuest({ onSuccessNewGuest, setIsOpenForm }) {

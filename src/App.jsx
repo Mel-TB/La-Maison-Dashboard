@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Dashboard from "./pages/dashboard/Dashboard";
 import Bookings from "./pages/bookings/Bookings";
@@ -11,10 +12,20 @@ import Users from "./pages/users/Users";
 import AppLayout from "./ui/appLayout/AppLayout";
 
 import GlobalStyles from "./global/GlobalStyle";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
+});
 
 const App = () => {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <GlobalStyles />
 
       <BrowserRouter>
@@ -65,7 +76,7 @@ const App = () => {
           />
         </Routes>
       </BrowserRouter>
-    </>
+    </QueryClientProvider>
   );
 };
 

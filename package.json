@@ -10,7 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.31.0",
+    "@tanstack/react-query": "^4.32.1",
+    "@tanstack/react-query-devtools": "^4.32.1",
+    "date-fns": "^2.30.0",
     "eslint-config-react-app": "^7.0.1",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
@@ -19,6 +24,7 @@
     "vite-plugin-eslint": "^1.8.1"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^4.32.1",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",

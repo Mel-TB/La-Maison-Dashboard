@@ -1,21 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-import { fetchCabins } from "../../services/apiCabins";
+import { useCabins } from "./hooks/useCabins";
 
 import { Spinner } from "../../ui/spinner/Spinner.styles";
 import { Table, TableHeader } from "./CabinTable.styles";
 import CabinRow from "./CabinRow";
 
 const CabinTable = () => {
-  const {
-    isLoading,
-    // eslint-disable-next-line no-unused-vars
-    data: cabins,
-    // eslint-disable-next-line no-unused-vars
-    error,
-  } = useQuery({
-    queryKey: ["cabins"],
-    queryFn: fetchCabins,
-  });
+  const { isLoading, cabins } = useCabins();
 
   if (isLoading) return <Spinner />;
 

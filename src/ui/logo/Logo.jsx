@@ -4,7 +4,7 @@ const Logo = () => {
   return (
     <StyledLogo>
       <Img
-        src='/logo-light.png'
+        src='/logo-basic.png'
         alt='Logo'
       />
     </StyledLogo>

@@ -1,7 +1,10 @@
+import PropTypes from "prop-types";
+
 import { StyledConfirmDelete } from "./ConfirmDelete.styles";
 import { Button } from "../button/Button.styles";
 import { Heading } from "./Heading";
 
+// eslint-disable-next-line no-unused-vars
 const ConfirmDelete = ({ resourceName, onConfirm, disabled }) => {
   return (
     <StyledConfirmDelete>
@@ -13,13 +16,13 @@ const ConfirmDelete = ({ resourceName, onConfirm, disabled }) => {
 
       <div>
         <Button
-          variation='secondary'
+          $variation='secondary'
           disabled={disabled}
         >
           Cancel
         </Button>
         <Button
-          variation='danger'
+          $variation='danger'
           disabled={disabled}
         >
           Delete
@@ -27,6 +30,12 @@ const ConfirmDelete = ({ resourceName, onConfirm, disabled }) => {
       </div>
     </StyledConfirmDelete>
   );
+};
+
+ConfirmDelete.propTypes = {
+  resourceName: PropTypes.string,
+  onConfirm: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 export default ConfirmDelete;

@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 import { Error, Label, StyledFormRow } from "./FormRow.styles";
 
 const FormRow = ({ label, error, children, orientation }) => {
@@ -10,4 +12,10 @@ const FormRow = ({ label, error, children, orientation }) => {
   );
 };
 
+FormRow.propTypes = {
+  label: PropTypes.string,
+  error: PropTypes.string,
+  children: PropTypes.node,
+  orientation: PropTypes.number,
+};
 export default FormRow;

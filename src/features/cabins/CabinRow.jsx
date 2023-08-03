@@ -1,52 +1,55 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+/* eslint-disable no-unused-vars */
+import { useState } from "react";
 import PropTypes from "prop-types";
+import { useDeleteCabin } from "./hooks/useDeleteCabin";
+
+import CreateCabinForm from "./CreateCabinForm";
 
 import { formatCurrency } from "../../utils/helpers";
-
 import { Cabin, Discount, Img, Price, TableRow } from "./CabinRow.styles";
-import { deleteCabins } from "../../services/apiCabins";
 
 const CabinRow = ({ cabin }) => {
+  const [showForm, setShowForm] = useState(false);
+  const { isDeleting, deleteCabin } = useDeleteCabin();
+
   const {
     id: cabinId,
     name,
-
-    max_capacity: maxCapacity,
-
-    regular_price: regularPrice,
-
+    max_capacity,
+    regular_price,
     discount,
     image,
   } = cabin;
 
-  const queryClient = useQueryClient();
-
-  const { isPending: isDeleting, mutate } = useMutation({
-    mutationFn: deleteCabins,
-    onSuccess: () => {
-      alert("Cabin successfully deleted");
-      queryClient.invalidateQueries({
-        queryKey: ["cabins"],
-      });
-    },
-    onError: (error) => alert(error.message),
-  });
-
   return (
-    <TableRow role='row'>
-      <Img src={image} />
-      <Cabin>{name}</Cabin>
-      <div>Max {maxCapacity} guests</div>
-      <Price>{formatCurrency(regularPrice)}</Price>
-      <Discount>{formatCurrency(discount)}</Discount>
-      <button
-        onClick={() => mutate(cabinId)}
-        disabled={isDeleting}
-      >
-        {" "}
-        Delete{" "}
-      </button>
-    </TableRow>
+    <>
+      <TableRow role='row'>
+        <Img src={image} />
+        <Cabin>{name}</Cabin>
+        <div>Max {max_capacity} guests</div>
+        <Price>{formatCurrency(regular_price)}</Price>
+        {discount ? (
+          <Discount>{formatCurrency(discount)}</Discount>
+        ) : (
+          <span>&mdash;</span>
+        )}
+        <div>
+          <button onClick={() => setShowForm((show) => !show)}>Edit</button>
+
+          <button
+            onClick={() => deleteCabin(cabinId)}
+            disabled={isDeleting}
+          >
+            {" "}
+            Delete{" "}
+          </button>
+        </div>
+      </TableRow>
+      {
+        // if Edit is clicked show form outside the TableRow
+      }
+      {showForm && <CreateCabinForm cabinToEdit={cabin} />}
+    </>
   );
 };
 

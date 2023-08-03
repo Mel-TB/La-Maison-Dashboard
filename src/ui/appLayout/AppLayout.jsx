@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../sidebar/Sidebar";
 import Header from "../header/Header";
 
-import { Main, StyledAppLayout } from "./AppLayout.styles";
+import { Container, Main, StyledAppLayout } from "./AppLayout.styles";
 
 const AppLayout = () => {
   return (
@@ -11,7 +11,9 @@ const AppLayout = () => {
       <Header />
       <Sidebar />
       <Main>
-        <Outlet />
+        <Container>
+          <Outlet />
+        </Container>
       </Main>
     </StyledAppLayout>
   );

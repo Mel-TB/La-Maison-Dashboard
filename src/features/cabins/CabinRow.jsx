@@ -1,16 +1,17 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import { HiSquare3Stack3D, HiPencilSquare, HiTrash } from "react-icons/hi2";
 
 import CreateCabinForm from "./CreateCabinForm";
+import Modal from "../../ui/modal/Modal";
 
 import { useDeleteCabin } from "./hooks/useDeleteCabin";
-import { formatCurrency } from "../../utils/helpers";
-import { Cabin, Discount, Img, Price, TableRow } from "./CabinRow.styles";
 import { useCreateCabin } from "./hooks/useCreateCabin";
 
+import { formatCurrency } from "../../utils/helpers";
+import { Cabin, Discount, Img, Price, TableRow } from "./CabinRow.styles";
+import ConfirmDelete from "../../ui/confirmDelete/ConfirmDelete";
+
 const CabinRow = ({ cabin }) => {
-  const [showForm, setShowForm] = useState(false);
   const { isDeleting, deleteCabin } = useDeleteCabin();
   const { isCreating, createCabin } = useCreateCabin();
 
@@ -59,31 +60,43 @@ const CabinRow = ({ cabin }) => {
             <HiSquare3Stack3D />
           </button>
 
-          {
-            // * Edit Button
-          }
-          <button onClick={() => setShowForm((show) => !show)}>
-            {" "}
-            <HiPencilSquare />{" "}
-          </button>
+          <Modal>
+            <Modal.Open open='edit'>
+              {
+                // * Update Button
+              }
+              <button>
+                {" "}
+                <HiPencilSquare />{" "}
+              </button>
+            </Modal.Open>
+            <Modal.Window name='edit'>
+              <CreateCabinForm cabinToUpdate={cabin} />
+            </Modal.Window>
 
-          {
-            // * Delete Button
-          }
+            <Modal.Open open='delete'>
+              {
+                // * Delete Button
+              }
 
-          <button
-            onClick={() => deleteCabin(cabinId)}
-            disabled={isDeleting}
-          >
-            {" "}
-            <HiTrash />{" "}
-          </button>
+              <button>
+                {" "}
+                <HiTrash />{" "}
+              </button>
+            </Modal.Open>
+            <Modal.Window name='delete'>
+              <ConfirmDelete
+                resourceName='cabins'
+                disabled={isDeleting}
+                onConfirm={() => deleteCabin(cabinId)}
+              />
+            </Modal.Window>
+          </Modal>
         </div>
       </TableRow>
       {
-        // if Edit is clicked show form outside the TableRow
+        // if update is clicked show form outside the TableRow
       }
-      {showForm && <CreateCabinForm cabinToEdit={cabin} />}
     </>
   );
 };

@@ -9,19 +9,19 @@ import { Button } from "../../ui/button/Button.styles";
 import { Textarea } from "../../ui/input/Textarea.styles";
 import { FileInput } from "../../ui/input/FileInput.styles";
 import { useCreateCabin } from "./hooks/useCreateCabin";
-import { useEditCabin } from "./hooks/useEditCabin";
+import { useUpdateCabin } from "./hooks/useUpdateCabin";
 
-const CreateCabinForm = ({ cabinToEdit = {} }) => {
+const CreateCabinForm = ({ cabinToUpdate = {}, onCloseModal }) => {
   const { isCreating, createCabin } = useCreateCabin();
-  const { editCabin, isEditing } = useEditCabin();
-  const isWorking = isCreating || isEditing;
+  const { updateCabin, isUpdating } = useUpdateCabin();
+  const isWorking = isCreating || isUpdating;
 
-  // Check if we edit or not
-  const { id: editId, ...editValues } = cabinToEdit;
-  const isEditSession = Boolean(editId);
+  // Check if update or not
+  const { id: updateId, ...updateValues } = cabinToUpdate;
+  const isUpdateSession = Boolean(updateId);
 
   const { register, handleSubmit, reset, getValues, formState } = useForm({
-    defaultValues: isEditSession ? editValues : {},
+    defaultValues: isUpdateSession ? updateValues : {},
   });
 
   const { errors } = formState;
@@ -29,13 +29,13 @@ const CreateCabinForm = ({ cabinToEdit = {} }) => {
   const onSubmit = (data) => {
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
-    if (isEditSession) {
-      editCabin(
-        { newCabinData: { ...data, image }, id: editId },
+    if (isUpdateSession) {
+      updateCabin(
+        { newCabinData: { ...data, image }, id: updateId },
         {
-          onSuccess: (data) => {
-            console.log(data);
+          onSuccess: () => {
             reset();
+            onCloseModal?.();
           },
         }
       );
@@ -43,9 +43,9 @@ const CreateCabinForm = ({ cabinToEdit = {} }) => {
       createCabin(
         { ...data, image: image },
         {
-          onSuccess: (data) => {
-            console.log(data);
+          onSuccess: () => {
             reset();
+            onCloseModal?.();
           },
         }
       );
@@ -53,7 +53,10 @@ const CreateCabinForm = ({ cabinToEdit = {} }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      onSubmit={handleSubmit(onSubmit)}
+      type={onCloseModal ? "modal" : "regular"}
+    >
       <FormRow
         label='Cabin Name'
         error={errors?.name?.message}
@@ -159,11 +162,12 @@ const CreateCabinForm = ({ cabinToEdit = {} }) => {
         <Button
           variation='secondary'
           type='reset'
+          onClick={() => onCloseModal?.()}
         >
           Cancel
         </Button>
         <Button disabled={isWorking}>
-          {isEditSession ? "Edit cabin" : "Add cabin"}
+          {isUpdateSession ? "Update cabin" : "Add cabin"}
         </Button>
       </FormRow>
     </Form>
@@ -171,7 +175,8 @@ const CreateCabinForm = ({ cabinToEdit = {} }) => {
 };
 
 CreateCabinForm.propTypes = {
-  cabinToEdit: PropTypes.object,
+  cabinToUpdate: PropTypes.object,
+  onCloseModal: PropTypes.func,
 };
 
 export default CreateCabinForm;

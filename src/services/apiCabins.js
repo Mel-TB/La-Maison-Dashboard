@@ -11,7 +11,7 @@ export const fetchCabins = async () => {
   return data;
 };
 
-export const createEditCabin = async (newCabin, id) => {
+export const createUpdateCabin = async (newCabin, id) => {
   // check image path
   const hasImagePath = newCabin?.image.startsWith?.(supabaseUrl);
 
@@ -24,7 +24,7 @@ export const createEditCabin = async (newCabin, id) => {
     ? newCabin.image
     : `${supabaseUrl}/storage/v1/object/public/cabin-images/${imageName}`;
 
-  // Create/ edit cabin
+  // Create/ update cabin
   let query = supabase.from("cabins");
 
   // 1. Create new Cabin
@@ -32,7 +32,7 @@ export const createEditCabin = async (newCabin, id) => {
     query = query.insert([{ ...newCabin, image: imagePath }]);
   }
 
-  // 2. Edit existing Cabin
+  // 2. Update existing Cabin
   if (id) {
     query = query
       .update({ ...newCabin, image: imagePath })

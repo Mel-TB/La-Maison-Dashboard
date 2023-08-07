@@ -16,14 +16,14 @@ const ConfirmDelete = ({ resourceName, onConfirm, disabled, onCloseModal }) => {
 
       <div>
         <Button
-          $variation='secondary'
+          variation='secondary'
           disabled={disabled}
           onClick={onCloseModal}
         >
           Cancel
         </Button>
         <Button
-          $variation='danger'
+          variation='danger'
           disabled={disabled}
           onClick={onConfirm}
         >

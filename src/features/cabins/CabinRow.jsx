@@ -1,15 +1,16 @@
 import PropTypes from "prop-types";
 import { HiSquare3Stack3D, HiPencilSquare, HiTrash } from "react-icons/hi2";
 
-import CreateCabinForm from "./CreateCabinForm";
 import Modal from "../../ui/modal/Modal";
+import Table from "../../ui/table/Tables";
+import CreateCabinForm from "./CreateCabinForm";
+import ConfirmDelete from "../../ui/confirmDelete/ConfirmDelete";
 
 import { useDeleteCabin } from "./hooks/useDeleteCabin";
 import { useCreateCabin } from "./hooks/useCreateCabin";
 
 import { formatCurrency } from "../../utils/helpers";
-import { Cabin, Discount, Img, Price, TableRow } from "./CabinRow.styles";
-import ConfirmDelete from "../../ui/confirmDelete/ConfirmDelete";
+import { Cabin, Discount, Img, Price } from "./CabinRow.styles";
 
 const CabinRow = ({ cabin }) => {
   const { isDeleting, deleteCabin } = useDeleteCabin();
@@ -38,7 +39,7 @@ const CabinRow = ({ cabin }) => {
 
   return (
     <>
-      <TableRow role='row'>
+      <Table.Row>
         <Img src={image} />
         <Cabin>{name}</Cabin>
         <div>Max {max_capacity} guests</div>
@@ -93,7 +94,7 @@ const CabinRow = ({ cabin }) => {
             </Modal.Window>
           </Modal>
         </div>
-      </TableRow>
+      </Table.Row>
       {
         // if update is clicked show form outside the TableRow
       }

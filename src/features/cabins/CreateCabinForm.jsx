@@ -33,7 +33,8 @@ const CreateCabinForm = ({ cabinToUpdate = {}, onCloseModal }) => {
       updateCabin(
         { newCabinData: { ...data, image }, id: updateId },
         {
-          onSuccess: () => {
+          // eslint-disable-next-line no-unused-vars
+          onSuccess: (data) => {
             reset();
             onCloseModal?.();
           },

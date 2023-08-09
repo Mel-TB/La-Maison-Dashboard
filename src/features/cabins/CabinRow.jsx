@@ -5,6 +5,7 @@ import Modal from "../../ui/modal/Modal";
 import Table from "../../ui/table/Tables";
 import CreateCabinForm from "./CreateCabinForm";
 import ConfirmDelete from "../../ui/confirmDelete/ConfirmDelete";
+import Menus from "../../ui/menu/Menus";
 
 import { useDeleteCabin } from "./hooks/useDeleteCabin";
 import { useCreateCabin } from "./hooks/useCreateCabin";
@@ -14,7 +15,7 @@ import { Cabin, Discount, Img, Price } from "./CabinRow.styles";
 
 const CabinRow = ({ cabin }) => {
   const { isDeleting, deleteCabin } = useDeleteCabin();
-  const { isCreating, createCabin } = useCreateCabin();
+  const { createCabin } = useCreateCabin();
 
   const {
     id: cabinId,
@@ -38,53 +39,49 @@ const CabinRow = ({ cabin }) => {
   };
 
   return (
-    <>
-      <Table.Row>
-        <Img src={image} />
-        <Cabin>{name}</Cabin>
-        <div>Max {max_capacity} guests</div>
-        <Price>{formatCurrency(regular_price)}</Price>
-        {discount ? (
-          <Discount>{formatCurrency(discount)}</Discount>
-        ) : (
-          <span>&mdash;</span>
-        )}
-        <div>
-          {
-            // * Duplicate new Cabin
-          }
+    <Table.Row>
+      <Img src={image} />
+      <Cabin>{name}</Cabin>
+      <div>Max {max_capacity} guests</div>
+      <Price>{formatCurrency(regular_price)}</Price>
+      {discount ? (
+        <Discount>{formatCurrency(discount)}</Discount>
+      ) : (
+        <span>&mdash;</span>
+      )}
+      <div>
+        <Modal>
+          <Menus.Menu>
+            <Menus.Toggle id={cabinId} />
 
-          <button
-            disabled={isCreating}
-            onClick={handleDuplicate}
-          >
-            <HiSquare3Stack3D />
-          </button>
+            <Menus.List id={cabinId}>
+              <Menus.Button
+                icon={<HiSquare3Stack3D />}
+                onClick={handleDuplicate}
+              >
+                Duplicate
+              </Menus.Button>
 
-          <Modal>
-            <Modal.Open open='edit'>
-              {
-                // * Update Button
-              }
-              <button>
-                {" "}
-                <HiPencilSquare />{" "}
-              </button>
-            </Modal.Open>
-            <Modal.Window name='edit'>
+              <Modal.Open open='update'>
+                {
+                  // * Update Button
+                }
+                <Menus.Button icon={<HiPencilSquare />}>Edit</Menus.Button>
+              </Modal.Open>
+
+              <Modal.Open open='delete'>
+                {
+                  // * Delete Button
+                }
+
+                <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
+              </Modal.Open>
+            </Menus.List>
+
+            <Modal.Window name='update'>
               <CreateCabinForm cabinToUpdate={cabin} />
             </Modal.Window>
 
-            <Modal.Open open='delete'>
-              {
-                // * Delete Button
-              }
-
-              <button>
-                {" "}
-                <HiTrash />{" "}
-              </button>
-            </Modal.Open>
             <Modal.Window name='delete'>
               <ConfirmDelete
                 resourceName='cabins'
@@ -92,13 +89,10 @@ const CabinRow = ({ cabin }) => {
                 onConfirm={() => deleteCabin(cabinId)}
               />
             </Modal.Window>
-          </Modal>
-        </div>
-      </Table.Row>
-      {
-        // if update is clicked show form outside the TableRow
-      }
-    </>
+          </Menus.Menu>
+        </Modal>
+      </div>
+    </Table.Row>
   );
 };
 

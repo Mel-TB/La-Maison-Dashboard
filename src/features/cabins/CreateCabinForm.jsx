@@ -120,10 +120,10 @@ const CreateCabinForm = ({ cabinToUpdate = {}, onCloseModal }) => {
             required: "This field is required",
             validate: {
               positive: (value) =>
-                Number(value) > -1 || "should be greater or equal than zero",
+                value > -1 || "should be greater or equal than zero",
 
               lessThan: (value) =>
-                Number(value) <= Number(getValues().regular_price) ||
+                value <= getValues().regular_price ||
                 "Should be less than regular price",
             },
           })}

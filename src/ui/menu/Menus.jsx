@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { HiEllipsisVertical } from "react-icons/hi2";
 import { PropTypes } from "prop-types";
@@ -32,6 +32,19 @@ const Menus = ({ children }) => {
 
 const Toggle = ({ id }) => {
   const { openId, close, open, setPosition } = useContext(MenusContext);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (openId) {
+        close();
+        document.removeEventListener("wheel", handleScroll);
+      }
+    };
+
+    if (openId) {
+      document.addEventListener("wheel", handleScroll);
+    }
+    return () => document.removeEventListener("wheel", handleScroll);
+  }, [openId, close]);
 
   const handleClick = (e) => {
     const rect = e.target.closest("button").getBoundingClientRect();

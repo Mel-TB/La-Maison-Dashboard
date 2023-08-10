@@ -8,13 +8,6 @@ import { bookings } from "./data-bookings";
 import { cabins } from "./data-cabins";
 import { guests } from "./data-guests";
 
-// const originalSettings = {
-//   minBookingLength: 3,
-//   maxBookingLength: 30,
-//   maxGuestsPerBooking: 10,
-//   breakfastPrice: 15,
-// };
-
 const deleteGuests = async () => {
   const { error } = await supabase.from("guests").delete().gt("id", 0);
   if (error) console.log(error.message);

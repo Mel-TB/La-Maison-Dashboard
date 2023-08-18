@@ -38,6 +38,10 @@ const CabinRow = ({ cabin }) => {
     });
   };
 
+  const handleDeleteCabin = () => {
+    deleteCabin(cabinId);
+  };
+
   return (
     <Table.Row>
       <Img src={image} />
@@ -86,7 +90,7 @@ const CabinRow = ({ cabin }) => {
               <ConfirmDelete
                 resourceName='cabins'
                 disabled={isDeleting}
-                onConfirm={() => deleteCabin(cabinId)}
+                onConfirm={handleDeleteCabin}
               />
             </Modal.Window>
           </Menus.Menu>

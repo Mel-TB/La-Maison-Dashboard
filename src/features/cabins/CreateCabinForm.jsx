@@ -120,10 +120,10 @@ const CreateCabinForm = ({ cabinToUpdate = {}, onCloseModal }) => {
             required: "This field is required",
             validate: {
               positive: (value) =>
-                value > -1 || "should be greater or equal than zero",
+                Number(value) > -1 || "should be greater or equal than zero",
 
               lessThan: (value) =>
-                value <= getValues().regular_price ||
+                Number(value) <= Number(getValues("regular_price")) ||
                 "Should be less than regular price",
             },
           })}
@@ -150,8 +150,9 @@ const CreateCabinForm = ({ cabinToUpdate = {}, onCloseModal }) => {
           accept='image/*'
           {...register("image", {
             validate: (fileData) => {
-              if (typeof fileData === "string" || fileData?.length === 1)
+              if (typeof fileData === "string" || fileData?.length === 1) {
                 return true;
+              }
               return "File is required";
             },
           })}

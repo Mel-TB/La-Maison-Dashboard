@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { StyledCheckbox } from "./Checkbox.styles";
 
 const Checkbox = ({ checked, onChange, disabled = false, id, children }) => {
@@ -15,4 +16,11 @@ const Checkbox = ({ checked, onChange, disabled = false, id, children }) => {
   );
 };
 
+Checkbox.propTypes = {
+  checked: PropTypes.bool,
+  onChange: PropTypes.func,
+  disabled: PropTypes.bool,
+  id: PropTypes.string,
+  children: PropTypes.node,
+};
 export default Checkbox;

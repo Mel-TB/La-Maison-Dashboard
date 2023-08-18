@@ -70,7 +70,9 @@ const List = ({ id, children }) => {
 
   const ref = useOutsideClick(close);
   // Render list if openId equal to id otherwise return nothing
-  if (openId !== id) return null;
+  if (openId !== id) {
+    return null;
+  }
 
   return createPortal(
     <StyledList

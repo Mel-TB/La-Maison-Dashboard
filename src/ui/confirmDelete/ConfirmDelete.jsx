@@ -4,7 +4,6 @@ import { StyledConfirmDelete } from "./ConfirmDelete.styles";
 import { Button } from "../button/Button.styles";
 import { Heading } from "../header/Heading.styles";
 
-// eslint-disable-next-line no-unused-vars
 const ConfirmDelete = ({ resourceName, onConfirm, disabled, onCloseModal }) => {
   return (
     <StyledConfirmDelete>

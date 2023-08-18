@@ -18,7 +18,9 @@ const CreateGuestForm = ({ onSuccessNewGuest, closeModal }) => {
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
-  if (isLoadingCountries) return <Spinner />;
+  if (isLoadingCountries) {
+    return <Spinner />;
+  }
 
   const countryOptions = countries.map((country) => {
     return {

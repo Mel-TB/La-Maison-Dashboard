@@ -20,12 +20,16 @@ const UpdateSettingsForm = () => {
   // eslint-disable-next-line no-unused-vars
   const { isUpdating, updateSetting } = useUpdateSetting();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   const handleUpdate = (e, field) => {
     const { value } = e.target;
 
-    if (!value) return;
+    if (!value) {
+      return;
+    }
 
     updateSetting({ [field]: value });
   };
@@ -41,7 +45,6 @@ const UpdateSettingsForm = () => {
           onBlur={(e) => handleUpdate(e, "min_booking_length")}
         />
       </FormRow>
-
       <FormRow label='Maximum nights/booking'>
         <Input
           type='number'
@@ -51,7 +54,6 @@ const UpdateSettingsForm = () => {
           onBlur={(e) => handleUpdate(e, "max_booking_length")}
         />
       </FormRow>
-
       <FormRow label='Maximum guests/booking'>
         <Input
           type='number'
@@ -61,7 +63,6 @@ const UpdateSettingsForm = () => {
           onBlur={(e) => handleUpdate(e, "max_guest_per_booking")}
         />
       </FormRow>
-
       <FormRow label='Breakfast price'>
         <Input
           type='number'

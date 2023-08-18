@@ -18,6 +18,8 @@ import Settings from "./pages/settings/Settings";
 import Users from "./pages/users/Users";
 
 import GlobalStyles from "./global/GlobalStyle";
+import Booking from "./pages/booking/Booking";
+import Checkin from "./pages/checkin/Checkin";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -53,6 +55,14 @@ const App = () => {
               <Route
                 path='bookings'
                 element={<Bookings />}
+              />
+              <Route
+                path='bookings/:bookingId'
+                element={<Booking />}
+              />
+              <Route
+                path='checkin/:bookingId'
+                element={<Checkin />}
               />
               <Route
                 path='cabins'

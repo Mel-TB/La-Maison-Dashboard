@@ -8,9 +8,15 @@ import { List, PaginationContainer, StyledGuestList } from "./GuestList.styles";
 const GuestList = ({ onClick }) => {
   const { isLoading, guests, count } = useGuests();
 
-  if (isLoading) return <Spinner />;
-  if (count === undefined) return null;
-  if (count === 0) return <p>No guests found...</p>;
+  if (isLoading) {
+    return <Spinner />;
+  }
+  if (count === undefined) {
+    return null;
+  }
+  if (count === 0) {
+    return <p>No guests found...</p>;
+  }
 
   return (
     <StyledGuestList>

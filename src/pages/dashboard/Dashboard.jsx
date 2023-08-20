@@ -1,12 +1,19 @@
-import { Heading } from "../../ui/header/Heading.styles";
+import DashboardFilter from "../../features/dashboard/DashboardFilter";
+import DashboardLayout from "../../features/dashboard/DashboardLayout";
+
 import { Row } from "../../ui/row/Row.styles";
+import { Heading } from "../../ui/header/Heading.styles";
 
 const Dashboard = () => {
   return (
-    <Row type='horizontal'>
-      <Heading as='h1'>Dashboard</Heading>
-      <p>TEST</p>
-    </Row>
+    <>
+      <Row type='horizontal'>
+        <Heading as='h1'>Dashboard</Heading>
+        <DashboardFilter />
+      </Row>
+
+      <DashboardLayout />
+    </>
   );
 };
 

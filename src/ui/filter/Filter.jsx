@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
+import { useSearchParams } from "react-router-dom";
 
 import { StyledFilter, FilterButton } from "./Filter.styles";
-import { useSearchParams } from "react-router-dom";
 
 const Filter = ({ filterField, options }) => {
   const [searchParams, setSearchParams] = useSearchParams();

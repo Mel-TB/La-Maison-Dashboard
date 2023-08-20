@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { PropTypes } from "prop-types";
 import { createPortal } from "react-dom";
 import { HiEllipsisVertical } from "react-icons/hi2";
-import { PropTypes } from "prop-types";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import {
   StyledMenu,

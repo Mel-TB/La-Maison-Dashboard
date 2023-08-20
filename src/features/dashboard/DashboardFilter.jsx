@@ -1,4 +1,4 @@
-import { Filter } from "../../ui/filter/filter.styles";
+import Filter from "../../ui/filter/Filter";
 
 const DashboardFilter = () => {
   return (

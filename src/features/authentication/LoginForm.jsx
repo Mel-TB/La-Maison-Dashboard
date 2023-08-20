@@ -2,13 +2,32 @@ import { useState } from "react";
 import { Button } from "../../ui/button/Button.styles";
 import { Form } from "../../ui/form/Form.styles";
 import { Input } from "../../ui/input/Input.styles";
-import { FormRow } from "../../ui/form/FormRow.styles";
+import FormRow from "../../ui/form/FormRow";
+
+import { useLogin } from "./hooks/useLogin";
+
+import { SpinnerMini } from "../../ui/spinner/SpinnerMini.styles";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("melinda.trami@test.fr");
+  const [password, setPassword] = useState("EzioSimba15");
+  const { login, isLoading } = useLogin();
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      return;
+    }
+    login(
+      { email, password },
+      {
+        onSettled: () => {
+          setEmail("");
+          setPassword("");
+        },
+      }
+    );
+  };
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -23,8 +42,10 @@ const LoginForm = () => {
           autoComplete='username'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={isLoading}
         />
       </FormRow>
+
       <FormRow
         label='Password'
         orientation='vertical'
@@ -35,10 +56,16 @@ const LoginForm = () => {
           autoComplete='current-password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={isLoading}
         />
       </FormRow>
       <FormRow orientation='vertical'>
-        <Button size='large'>Login</Button>
+        <Button
+          size='large'
+          disabled={isLoading}
+        >
+          {!isLoading ? "Log in" : <SpinnerMini />}
+        </Button>
       </FormRow>
     </Form>
   );

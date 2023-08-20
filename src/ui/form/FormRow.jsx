@@ -16,6 +16,7 @@ FormRow.propTypes = {
   label: PropTypes.string,
   error: PropTypes.string,
   children: PropTypes.node,
-  orientation: PropTypes.number,
+  orientation: PropTypes.string,
 };
+
 export default FormRow;

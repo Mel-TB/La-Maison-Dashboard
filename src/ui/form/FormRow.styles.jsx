@@ -8,7 +8,7 @@ export const StyledFormRow = styled.div`
     props.orientation === "vertical" ? "1fr" : "24rem 1fr 1.2fr"};
   gap: ${(props) => (props.orientation === "vertical" ? "0.8rem" : "2.4rem")};
 
-  padding: 1.2rem 0;
+  padding: 1.2rem;
 
   &:first-child {
     padding-top: 0;

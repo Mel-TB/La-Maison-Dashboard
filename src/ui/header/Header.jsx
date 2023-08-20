@@ -1,3 +1,6 @@
+import HeaderMenu from "./HeaderMenu";
+import UserAvatar from "../../features/authentication/UserAvatar";
+
 import { StyledHeader } from "./Header.styles";
 
 const Header = () => {
@@ -6,7 +9,8 @@ const Header = () => {
       role='row'
       // $columns={columns}
     >
-      HEADER
+      <UserAvatar />
+      <HeaderMenu />
     </StyledHeader>
   );
 };

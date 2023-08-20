@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
+
+import FormRow from "../../ui/form/FormRow";
+
 import { Button } from "../../ui/button/Button.styles";
 import { Form } from "../../ui/form/Form.styles";
-import { FormRow } from "../../ui/form/FormRow.styles";
 import { Input } from "../../ui/input/Input.styles";
 
-import { useUpdateUser } from "./useUpdateUser";
+import { useUpdateUser } from "./hooks/useUpdateUser";
 
 const UpdatePasswordForm = () => {
   const { register, handleSubmit, formState, getValues, reset } = useForm();
@@ -19,7 +21,7 @@ const UpdatePasswordForm = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow
-        label='Password (min 8 characters)'
+        label='New password (min 8 chars)'
         error={errors?.password?.message}
       >
         <Input

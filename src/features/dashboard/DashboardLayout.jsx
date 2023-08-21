@@ -1,22 +1,34 @@
+/* eslint-disable no-unused-vars */
 import { Spinner } from "../../ui/spinner/Spinner.styles";
+import { useCabins } from "../cabins/hooks/useCabins";
 import { StyledDashboardLayout } from "./DashboardLayout.styles";
+import Stats from "./Stats";
 
 import { useRecentBookings } from "./hooks/useRecentBookings";
 import { useRecentStays } from "./hooks/useRecentStays";
 
 const DashboardLayout = () => {
-  // eslint-disable-next-line no-unused-vars
   const { bookings, isLoading } = useRecentBookings();
-  // eslint-disable-next-line no-unused-vars
-  const { stays, confirmStays, isLoading: isLoadingStays } = useRecentStays();
+  const {
+    stays,
+    confirmStays,
+    isLoading: isLoadingStays,
+    numDays,
+  } = useRecentStays();
+  const { cabins, isLoading: isLoadingCabins } = useCabins();
 
-  if (isLoading || isLoadingStays) {
+  if (isLoading || isLoadingStays || isLoadingCabins) {
     return <Spinner />;
   }
 
   return (
     <StyledDashboardLayout>
-      <div>Statistic</div>
+      <Stats
+        bookings={bookings}
+        confirmStays={confirmStays}
+        numDays={numDays}
+        cabinCount={cabins.length}
+      />
       <div>Today activity</div>
       <div>Chart stay duration</div>
       <div>Chart sales</div>

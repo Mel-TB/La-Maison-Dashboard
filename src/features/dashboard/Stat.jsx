@@ -1,3 +1,4 @@
+import { PropTypes } from "prop-types";
 import { Icon, StyledStat, Title, Value } from "./Stat.styles";
 
 const Stat = ({ icon, title, value, color }) => {
@@ -10,4 +11,10 @@ const Stat = ({ icon, title, value, color }) => {
   );
 };
 
+Stat.propTypes = {
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  title: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  color: PropTypes.string,
+};
 export default Stat;

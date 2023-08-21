@@ -5,6 +5,7 @@ import { useRecentBookings } from "./hooks/useRecentBookings";
 import { useRecentStays } from "./hooks/useRecentStays";
 
 const DashboardLayout = () => {
+  // eslint-disable-next-line no-unused-vars
   const { bookings, isLoading } = useRecentBookings();
   // eslint-disable-next-line no-unused-vars
   const { stays, confirmStays, isLoading: isLoadingStays } = useRecentStays();
@@ -12,8 +13,6 @@ const DashboardLayout = () => {
   if (isLoading || isLoadingStays) {
     return <Spinner />;
   }
-
-  console.log(bookings);
 
   return (
     <StyledDashboardLayout>

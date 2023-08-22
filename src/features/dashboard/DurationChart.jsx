@@ -1,46 +1,59 @@
 /* eslint-disable no-unused-vars */
+import { PropTypes } from "prop-types";
+import {
+  PieChart,
+  ResponsiveContainer,
+  Pie,
+  Cell,
+  Legend,
+  Tooltip,
+} from "recharts";
+
 import { ChartBox } from "./DurationChart.styles";
+import { Heading } from "../../ui/header/Heading.styles";
+
+import { useDarkMode } from "../../context/DarkModeContext";
 
 const startDataLight = [
   {
     duration: "1 night",
     value: 0,
-    color: "#ef4444",
+    colors: "#ef4444",
   },
   {
     duration: "2 nights",
     value: 0,
-    color: "#f97316",
+    colors: "#f97316",
   },
   {
     duration: "3 nights",
     value: 0,
-    color: "#eab308",
+    colors: "#eab308",
   },
   {
     duration: "4-5 nights",
     value: 0,
-    color: "#84cc16",
+    colors: "#84cc16",
   },
   {
     duration: "6-7 nights",
     value: 0,
-    color: "#22c55e",
+    colors: "#22c55e",
   },
   {
     duration: "8-14 nights",
     value: 0,
-    color: "#14b8a6",
+    colors: "#14b8a6",
   },
   {
     duration: "15-21 nights",
     value: 0,
-    color: "#3b82f6",
+    colors: "#3b82f6",
   },
   {
     duration: "21+ nights",
     value: 0,
-    color: "#a855f7",
+    colors: "#a855f7",
   },
 ];
 
@@ -48,57 +61,55 @@ const startDataDark = [
   {
     duration: "1 night",
     value: 0,
-    color: "#b91c1c",
+    colors: "#b91c1c",
   },
   {
     duration: "2 nights",
     value: 0,
-    color: "#c2410c",
+    colors: "#c2410c",
   },
   {
     duration: "3 nights",
     value: 0,
-    color: "#a16207",
+    colors: "#a16207",
   },
   {
     duration: "4-5 nights",
     value: 0,
-    color: "#4d7c0f",
+    colors: "#4d7c0f",
   },
   {
     duration: "6-7 nights",
     value: 0,
-    color: "#15803d",
+    colors: "#15803d",
   },
   {
     duration: "8-14 nights",
     value: 0,
-    color: "#0f766e",
+    colors: "#0f766e",
   },
   {
     duration: "15-21 nights",
     value: 0,
-    color: "#1d4ed8",
+    colors: "#1d4ed8",
   },
   {
     duration: "21+ nights",
     value: 0,
-    color: "#7e22ce",
+    colors: "#7e22ce",
   },
 ];
 
-const prepareData = (startData, stays) => {
-  // A bit ugly code, but sometimes this is what it takes when working with real data 😅
-
+const prepareData = (startData, stay) => {
   const incArrayValue = (arr, field) => {
     return arr.map((obj) =>
       obj.duration === field ? { ...obj, value: obj.value + 1 } : obj
     );
   };
 
-  const data = stays
+  const data = stay
     .reduce((arr, cur) => {
-      const num = cur.numNights;
+      const num = cur.number_nights;
       if (num === 1) {
         return incArrayValue(arr, "1 night");
       }
@@ -129,3 +140,56 @@ const prepareData = (startData, stays) => {
 
   return data;
 };
+
+const DurationChart = ({ confirmStays }) => {
+  const { isDarkMode } = useDarkMode();
+  const startData = isDarkMode ? startDataDark : startDataLight;
+  const data = prepareData(startData, confirmStays);
+
+  return (
+    <ChartBox>
+      <Heading as='h2'>Stay duration</Heading>
+
+      <ResponsiveContainer
+        width='100%'
+        height='100%'
+      >
+        <PieChart>
+          <Pie
+            data={data}
+            dataKey='value'
+            nameKey='duration'
+            cx='50%'
+            cy='45%'
+            innerRadius={85}
+            outerRadius={110}
+            paddingAngle={3}
+          >
+            {data.map((entry) => (
+              <Cell
+                key={entry.value}
+                fill={entry.colors}
+                stroke={entry.colors}
+              />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend
+            verticalAlign='middle'
+            align='right'
+            width={120}
+            layout='vertical'
+            iconType='circle'
+            iconSize='12'
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </ChartBox>
+  );
+};
+
+DurationChart.propTypes = {
+  confirmStays: PropTypes.array,
+};
+
+export default DurationChart;

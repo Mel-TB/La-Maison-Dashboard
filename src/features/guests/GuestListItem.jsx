@@ -1,5 +1,5 @@
 import { Flag } from "../../ui/flag/Flag.styles";
-import { StyledGuestListItem } from "./GuestListItem.styles";
+import { StyledGuestListItem, ID } from "./styles/GuestListItem.styles";
 
 const GuestListItem = ({ guest, onClick }) => {
   return (
@@ -8,11 +8,11 @@ const GuestListItem = ({ guest, onClick }) => {
       role='button'
     >
       <Flag
-        src={guest.countryFlag}
+        src={guest.country}
         alt={`Flag of ${guest.nationality}`}
       />
-      <div>{guest.fullName}</div>
-      <ID>ID: {guest.nationalID}</ID>
+      <div>{guest.full_name}</div>
+      <ID>ID: {guest.national_id}</ID>
     </StyledGuestListItem>
   );
 };

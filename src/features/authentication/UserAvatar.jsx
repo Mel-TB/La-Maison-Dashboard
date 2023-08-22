@@ -1,5 +1,6 @@
+import { StyledUserAvatar, Avatar } from "./styles/UserAvatar.styles";
+
 import { useUser } from "./hooks/useUser";
-import { StyledUserAvatar, Avatar } from "./UserAvatar.styles";
 
 const UserAvatar = () => {
   const { user } = useUser();

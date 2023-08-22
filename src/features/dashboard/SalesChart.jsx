@@ -11,7 +11,7 @@ import {
 } from "recharts";
 
 import { Heading } from "../../ui/header/Heading.styles";
-import { StyledSalesChart } from "./SalesChart.styles";
+import { StyledSalesChart } from "./styles/SalesChart.styles";
 
 import { useDarkMode } from "../../context/DarkModeContext";
 

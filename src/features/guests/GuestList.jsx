@@ -1,9 +1,14 @@
-import Pagination from "../../ui/pagination/Pagination.styles";
-import Spinner from "../../ui/spinner/Spinner.styles";
-import { useGuests } from "features/guests/useGuests";
 import GuestListItem from "./GuestListItem";
 
-import { List, PaginationContainer, StyledGuestList } from "./GuestList.styles";
+import {
+  List,
+  PaginationContainer,
+  StyledGuestList,
+} from "./styles/GuestList.styles";
+import Spinner from "../../ui/spinner/Spinner.styles";
+import Pagination from "../../ui/pagination/Pagination.styles";
+
+import { useGuests } from "./hooks/useCreateGuest";
 
 const GuestList = ({ onClick }) => {
   const { isLoading, guests, count } = useGuests();

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { PropTypes } from "prop-types";
 import {
   PieChart,
@@ -9,7 +8,7 @@ import {
   Tooltip,
 } from "recharts";
 
-import { ChartBox } from "./DurationChart.styles";
+import { ChartBox } from "./styles/DurationChart.styles";
 import { Heading } from "../../ui/header/Heading.styles";
 
 import { useDarkMode } from "../../context/DarkModeContext";

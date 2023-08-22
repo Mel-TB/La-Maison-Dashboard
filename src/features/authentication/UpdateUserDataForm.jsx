@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 
 import FormRow from "../../ui/form/FormRow";

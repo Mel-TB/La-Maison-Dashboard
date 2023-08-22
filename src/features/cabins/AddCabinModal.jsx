@@ -1,5 +1,5 @@
-import CreateCabinForm from "./CreateCabinForm";
 import Modal from "../../ui/modal/Modal";
+import CreateCabinForm from "./CreateCabinForm";
 
 import { Button } from "../../ui/button/Button.styles";
 

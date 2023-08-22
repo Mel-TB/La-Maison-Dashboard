@@ -1,8 +1,7 @@
 import supabase from "./supabase";
 import { getToday } from "../utils/helpers";
-import { PAGE_SIZE } from "../utils/constant";
+import { PAGE_SIZE } from "../constants/constant";
 
-// eslint-disable-next-line no-unused-vars
 export const fetchBookings = async ({ filter, sortBy, page }) => {
   let query = supabase
     .from("bookings")
@@ -11,19 +10,19 @@ export const fetchBookings = async ({ filter, sortBy, page }) => {
       { count: "exact" }
     );
 
-  // Filter
+  //*  A) Filter
   if (filter) {
     query[filter.method || "eq"](filter.field, filter.value);
   }
 
-  // Sort By
+  //* B) Sort By
   if (sortBy) {
     query = query.order(sortBy.field, {
       ascending: sortBy.direction === "asc",
     });
   }
 
-  // Pagination
+  //* C) Pagination
   if (page) {
     const from = (page - 1) * PAGE_SIZE;
     const to = from + PAGE_SIZE - 1;
@@ -55,8 +54,8 @@ export const getBooking = async (id) => {
   return data;
 };
 
-// Returns all bookings  created after the given date. Useful to get bookings created in the last 30 days, for example.
-// Date = ISOString
+//* Returns all bookings  created after the given date. Useful to get bookings created in the last num days
+//! Date = ISOString
 export const getBookingsAfterDate = async (date) => {
   const { data, error } = await supabase
     .from("bookings")
@@ -72,7 +71,7 @@ export const getBookingsAfterDate = async (date) => {
   return data;
 };
 
-// Returns all stays created after the given date
+//* Returns all stays created after the given date
 export const getStaysAfterDate = async (date) => {
   const { data, error } = await supabase
     .from("bookings")
@@ -88,7 +87,7 @@ export const getStaysAfterDate = async (date) => {
   return data;
 };
 
-// Activity means that there is a check in or a check out today
+//! Activity = check in or a check out today
 export const getStaysTodayActivity = async () => {
   const { data, error } = await supabase
     .from("bookings")
@@ -125,7 +124,6 @@ export const updateBooking = async (id, obj) => {
 };
 
 export const deleteBooking = async (id) => {
-  // REMEMBER RLS POLICIES
   const { data, error } = await supabase.from("bookings").delete().eq("id", id);
 
   if (error) {

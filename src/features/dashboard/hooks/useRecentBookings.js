@@ -2,7 +2,7 @@ import { subDays } from "date-fns";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 
-import { getBookingsAfterDate } from "../../../services/apiBookings";
+import { getBookingsAfterDate } from "../../../lib/api/apiBookings";
 
 export const useRecentBookings = () => {
   // eslint-disable-next-line no-unused-vars

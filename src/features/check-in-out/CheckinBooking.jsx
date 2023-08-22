@@ -1,23 +1,22 @@
-// import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
-import BookingDataBox from "../../features/bookings/BookingDataBox";
 import Checkbox from "../../ui/checkbox/Checkbox";
+import BookingDataBox from "../bookings/BookingDataBox";
 
 import { Row } from "../../ui/row/Row.styles";
-import { Heading } from "../../ui/header/Heading.styles";
-import { ButtonGroup } from "../../ui/button/ButtonGroup.styles";
+import { Box } from "./styles/CheckinBooking.styles";
 import { Button } from "../../ui/button/Button.styles";
-import { ButtonText } from "../../ui/button/ButtonText.styles";
+import { Heading } from "../../ui/header/Heading.styles";
 import { Spinner } from "../../ui/spinner/Spinner.styles";
-import { Box } from "./CheckinBooking.styles";
+import { ButtonText } from "../../ui/button/ButtonText.styles";
+import { ButtonGroup } from "../../ui/button/ButtonGroup.styles";
 
+import { useCheckin } from "./hooks/useCheckin";
 import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "../bookings/hooks/useBooking";
-import { useCheckin } from "./hooks/useCheckin";
 import { useSettings } from "../settings/hooks/useSettings";
 
-import { formatCurrency } from "../../utils/helpers";
+import { formatCurrency } from "../../lib/utils/helpers";
 
 const CheckinBooking = () => {
   const moveBack = useMoveBack();

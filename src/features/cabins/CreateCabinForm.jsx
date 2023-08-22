@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 
 import FormRow from "../../ui/form/FormRow";
 
-import { Input } from "../../ui/input/Input.styles";
 import { Form } from "../../ui/form/Form.styles";
+import { Input } from "../../ui/input/Input.styles";
 import { Button } from "../../ui/button/Button.styles";
 import { Textarea } from "../../ui/input/Textarea.styles";
 import { FileInput } from "../../ui/input/FileInput.styles";
+
 import { useCreateCabin } from "./hooks/useCreateCabin";
 import { useUpdateCabin } from "./hooks/useUpdateCabin";
 

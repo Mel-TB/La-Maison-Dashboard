@@ -1,17 +1,18 @@
 import PropTypes from "prop-types";
 import { HiSquare3Stack3D, HiPencilSquare, HiTrash } from "react-icons/hi2";
 
+import Menus from "../../ui/menu/Menus";
 import Modal from "../../ui/modal/Modal";
 import Table from "../../ui/table/Tables";
 import CreateCabinForm from "./CreateCabinForm";
 import ConfirmDelete from "../../ui/confirmDelete/ConfirmDelete";
-import Menus from "../../ui/menu/Menus";
+
+import { Cabin, Discount, Img, Price } from "./styles/CabinRow.styles";
 
 import { useDeleteCabin } from "./hooks/useDeleteCabin";
 import { useCreateCabin } from "./hooks/useCreateCabin";
 
-import { formatCurrency } from "../../utils/helpers";
-import { Cabin, Discount, Img, Price } from "./CabinRow.styles";
+import { formatCurrency } from "../../lib/utils/helpers";
 
 const CabinRow = ({ cabin }) => {
   const { isDeleting, deleteCabin } = useDeleteCabin();

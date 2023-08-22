@@ -1,13 +1,14 @@
 import { useForm } from "react-hook-form";
 
-import { useCountries } from "../../hooks/useCountries";
-import { useCreateGuest } from "../../features/guests/useCreateGuest";
-import { Spinner } from "../../ui/spinner/Spinner.styles";
 import { Form } from "../../ui/form/Form.styles";
-import { FormRow } from "../../ui/form/FormRow.styles";
 import { Input } from "../../ui/input/Input.styles";
+import { FormRow } from "../../ui/form/FormRow.styles";
 import { Button } from "../../ui/button/Button.styles";
-import { FormSelect } from "./CreateGuestForm.styles";
+import { Spinner } from "../../ui/spinner/Spinner.styles";
+import { FormSelect } from "./styles/CreateGuestForm.styles";
+
+import { useCreateGuest } from "./hooks/useCreateGuest";
+import { useCountries } from "../../hooks/useCountries";
 
 // With NEW modal
 // function CreateGuest({ onSuccessNewGuest, setIsOpenForm }) {

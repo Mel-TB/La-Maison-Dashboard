@@ -2,9 +2,9 @@ import { useForm } from "react-hook-form";
 
 import FormRow from "../../ui/form/FormRow";
 
-import { Button } from "../../ui/button/Button.styles";
 import { Form } from "../../ui/form/Form.styles";
 import { Input } from "../../ui/input/Input.styles";
+import { Button } from "../../ui/button/Button.styles";
 
 import { useUpdateUser } from "./hooks/useUpdateUser";
 

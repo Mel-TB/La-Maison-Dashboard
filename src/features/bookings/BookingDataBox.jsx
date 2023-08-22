@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 import { format, isToday } from "date-fns";
 import {
   HiOutlineChatBubbleBottomCenterText,
@@ -8,11 +7,6 @@ import {
   HiOutlineHomeModern,
 } from "react-icons/hi2";
 
-import DataItem from "../../ui/dataItem/DataItem";
-import { Flag } from "../../ui/flag/Flag.styles";
-
-import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
-
 import {
   Footer,
   Guest,
@@ -20,7 +14,11 @@ import {
   Price,
   Section,
   StyledBookingDataBox,
-} from "./BookingDataBox.styles";
+} from "./styles/BookingDataBox.styles";
+import { Flag } from "../../ui/flag/Flag.styles";
+import DataItem from "../../ui/dataItem/DataItem";
+
+import { formatDistanceFromNow, formatCurrency } from "../../lib/utils/helpers";
 
 // A purely presentational component
 const BookingDataBox = ({ booking }) => {

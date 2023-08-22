@@ -2,7 +2,7 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { logout as logoutApi } from "../../../services/apiAuth";
+import { logout as logoutApi } from "../../../lib/api/apiAuth";
 export const useLogout = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();

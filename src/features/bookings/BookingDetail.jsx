@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+
 import Modal from "../../ui/modal/Modal";
 import BookingDataBox from "./BookingDataBox";
 import ConfirmDelete from "../../ui/confirmDelete/ConfirmDelete";
@@ -6,7 +7,7 @@ import ConfirmDelete from "../../ui/confirmDelete/ConfirmDelete";
 import { Tag } from "../../ui/tag/Tag.styles";
 import { Row } from "../../ui/row/Row.styles";
 import { Button } from "../../ui/button/Button.styles";
-import { HeadingGroup } from "./BookingDetails.styles";
+import { HeadingGroup } from "./styles/BookingDetails.styles";
 import { Heading } from "../../ui/header/Heading.styles";
 import { Spinner } from "../../ui/spinner/Spinner.styles";
 import { ButtonText } from "../../ui/button/ButtonText.styles";

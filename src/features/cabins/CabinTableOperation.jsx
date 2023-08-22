@@ -1,5 +1,6 @@
 import Filter from "../../ui/filter/Filter";
 import SortBy from "../../ui/sortBy/SortBy";
+
 import { TableOperations } from "../../ui/table/TableOperations.styles";
 
 const CabinTableOperation = () => {

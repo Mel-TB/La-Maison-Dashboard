@@ -1,18 +1,20 @@
 import PropTypes from "prop-types";
+import { format, isToday } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { HiArrowDownOnSquare, HiEye, HiCheck, HiTrash } from "react-icons/hi2";
-import { format, isToday } from "date-fns";
 
+import Modal from "../../ui/modal/Modal";
 import Menus from "../../ui/menu/Menus";
 import Table from "../../ui/table/Tables";
-import { Tag } from "../../ui/tag/Tag.styles";
-import { Amount, Cabin, Stacked } from "./BookingRow.styles";
-
-import { useCheckout } from "../check-in-out/hooks/useCheckout";
-import { formatCurrency, formatDistanceFromNow } from "../../utils/helpers";
-import Modal from "../../ui/modal/Modal";
 import ConfirmDelete from "../../ui/confirmDelete/ConfirmDelete";
+
+import { Tag } from "../../ui/tag/Tag.styles";
+import { Amount, Cabin, Stacked } from "./styles/BookingRow.styles";
+
 import { useDeleteBooking } from "./hooks/useDeleteBooking";
+import { useCheckout } from "../check-in-out/hooks/useCheckout";
+
+import { formatCurrency, formatDistanceFromNow } from "../../lib/utils/helpers";
 
 const BookingRow = ({
   booking: {

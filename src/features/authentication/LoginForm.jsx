@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { Button } from "../../ui/button/Button.styles";
-import { Form } from "../../ui/form/Form.styles";
-import { Input } from "../../ui/input/Input.styles";
+
 import FormRow from "../../ui/form/FormRow";
 
-import { useLogin } from "./hooks/useLogin";
-
+import { Form } from "../../ui/form/Form.styles";
+import { Input } from "../../ui/input/Input.styles";
+import { Button } from "../../ui/button/Button.styles";
 import { SpinnerMini } from "../../ui/spinner/SpinnerMini.styles";
+
+import { useLogin } from "./hooks/useLogin";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("melinda.trami@test.fr");

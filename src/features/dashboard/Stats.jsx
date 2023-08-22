@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { PropTypes } from "prop-types";
 import {
   HiOutlineBanknotes,
@@ -8,7 +7,7 @@ import {
 } from "react-icons/hi2";
 
 import Stat from "./Stat";
-import { formatCurrency } from "../../utils/helpers";
+import { formatCurrency } from "../../lib/utils/helpers";
 
 const Stats = ({ bookings, confirmStays, numDays, cabinCount }) => {
   //* A) Calculate total bookings

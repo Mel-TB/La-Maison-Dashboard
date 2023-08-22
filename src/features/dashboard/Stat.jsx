@@ -1,5 +1,6 @@
 import { PropTypes } from "prop-types";
-import { Icon, StyledStat, Title, Value } from "./Stat.styles";
+
+import { Icon, StyledStat, Title, Value } from "./styles/Stat.styles";
 
 const Stat = ({ icon, title, value, color }) => {
   return (

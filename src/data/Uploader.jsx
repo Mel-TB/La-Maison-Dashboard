@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { isFuture, isPast, isToday } from "date-fns";
-import supabase from "../services/supabase";
-import { Button } from "../ui/button/Button.styles";
-import { subtractDates } from "../utils/helpers";
 
 import { bookings } from "./data-bookings";
 import { cabins } from "./data-cabins";
 import { guests } from "./data-guests";
+
+import { Button } from "../ui/button/Button.styles";
+import supabase from "../lib/api/supabase";
+import { subtractDates } from "../lib/utils/helpers";
 
 const deleteGuests = async () => {
   const { error } = await supabase.from("guests").delete().gt("id", 0);

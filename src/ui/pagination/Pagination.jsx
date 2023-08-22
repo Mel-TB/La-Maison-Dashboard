@@ -9,7 +9,7 @@ import {
   PaginationButton,
 } from "./Pagination.styles";
 
-import { PAGE_SIZE } from "../../utils/constant";
+import { PAGE_SIZE } from "../../lib/constants/constant";
 
 const Pagination = ({ count }) => {
   const [searchParams, setSearchParams] = useSearchParams();

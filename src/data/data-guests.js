@@ -5,7 +5,7 @@ export const guests = [
     // id: 1000,
     full_name: "Melinda Trami",
     email: "hello@test.com",
-    nationality: "French",
+    nationality: "France",
     national_id: "FR79681d",
     country: "https://flagcdn.com/fr.svg",
   },

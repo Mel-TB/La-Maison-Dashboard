@@ -105,6 +105,7 @@ export const getStaysTodayActivity = async () => {
     console.error(error);
     throw new Error("Bookings could not get loaded");
   }
+
   return data;
 };
 

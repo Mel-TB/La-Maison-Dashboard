@@ -7,9 +7,9 @@ import ConfirmDelete from "../../ui/confirmDelete/ConfirmDelete";
 import { Tag } from "../../ui/tag/Tag.styles";
 import { Row } from "../../ui/row/Row.styles";
 import { Button } from "../../ui/button/Button.styles";
-import { HeadingGroup } from "./styles/BookingDetails.styles";
 import { Heading } from "../../ui/header/Heading.styles";
 import { Spinner } from "../../ui/spinner/Spinner.styles";
+import { HeadingGroup } from "./styles/BookingDetails.styles";
 import { ButtonText } from "../../ui/button/ButtonText.styles";
 import { ButtonGroup } from "../../ui/button/ButtonGroup.styles";
 

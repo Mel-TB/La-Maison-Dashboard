@@ -1,3 +1,5 @@
+import TodayItem from "./TodayItem";
+
 import {
   NoActivity,
   StyledToday,
@@ -20,7 +22,14 @@ const TodayActivity = () => {
 
       {!isLoading ? (
         activities?.length > 0 ? (
-          <TodayList></TodayList>
+          <TodayList>
+            {activities.map((activity) => (
+              <TodayItem
+                activity={activity}
+                key={activity.id}
+              />
+            ))}
+          </TodayList>
         ) : (
           <NoActivity>No activity for today</NoActivity>
         )

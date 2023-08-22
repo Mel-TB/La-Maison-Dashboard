@@ -1,21 +1,17 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+
 import { Button } from "../../ui/button/Button.styles";
-import { useCheckout } from "./hooks/useCheckout";
 
 const CheckoutButton = ({ bookingId }) => {
-  const { checkout, isCheckout } = useCheckout();
-
-  const handleCheckout = () => {
-    checkout(bookingId);
-  };
   return (
     <Button
       variation='primary'
       size='small'
-      onClick={handleCheckout}
-      disabled={isCheckout}
+      as={Link}
+      to={`/checkin/${bookingId}`}
     >
-      Check out
+      Check in
     </Button>
   );
 };

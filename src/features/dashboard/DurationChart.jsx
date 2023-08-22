@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { ChartBox } from "./DurationChart.styles";
 
 const startDataLight = [

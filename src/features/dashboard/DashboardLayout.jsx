@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
-import { Spinner } from "../../ui/spinner/Spinner.styles";
-import { useCabins } from "../cabins/hooks/useCabins";
-import { StyledDashboardLayout } from "./DashboardLayout.styles";
 import Stats from "./Stats";
+import SalesChart from "./SalesChart";
 
-import { useRecentBookings } from "./hooks/useRecentBookings";
+import { Spinner } from "../../ui/spinner/Spinner.styles";
+import { StyledDashboardLayout } from "./DashboardLayout.styles";
+
+import { useCabins } from "../cabins/hooks/useCabins";
 import { useRecentStays } from "./hooks/useRecentStays";
+import { useRecentBookings } from "./hooks/useRecentBookings";
 
 const DashboardLayout = () => {
   const { bookings, isLoading } = useRecentBookings();
@@ -31,7 +33,10 @@ const DashboardLayout = () => {
       />
       <div>Today activity</div>
       <div>Chart stay duration</div>
-      <div>Chart sales</div>
+      <SalesChart
+        bookings={bookings}
+        numDays={numDays}
+      />
     </StyledDashboardLayout>
   );
 };

@@ -17,6 +17,7 @@ import { useBooking } from "./hooks/useBooking";
 import { useMoveBack } from "../../hooks/useMoveBack";
 import { useDeleteBooking } from "./hooks/useDeleteBooking";
 import { useCheckout } from "../check-in-out/hooks/useCheckout";
+import Empty from "../../ui/empty/Empty";
 
 const BookingDetail = () => {
   const navigate = useNavigate();
@@ -28,6 +29,10 @@ const BookingDetail = () => {
   if (isLoading || isCheckout || isDeleting) {
     return <Spinner />;
   }
+  if (!booking) {
+    return <Empty resourceName='booking' />;
+  }
+
   const { status, id: bookingId } = booking;
 
   const statusToTagName = {

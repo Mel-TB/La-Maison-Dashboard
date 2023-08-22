@@ -32,6 +32,7 @@ const Menus = ({ children }) => {
 
 const Toggle = ({ id }) => {
   const { openId, close, open, setPosition } = useContext(MenusContext);
+
   useEffect(() => {
     const handleScroll = () => {
       if (openId) {
@@ -47,6 +48,7 @@ const Toggle = ({ id }) => {
   }, [openId, close]);
 
   const handleClick = (e) => {
+    e.stopPropagation();
     const rect = e.target.closest("button").getBoundingClientRect();
 
     setPosition({
@@ -54,7 +56,7 @@ const Toggle = ({ id }) => {
       y: rect.y + rect.height + 8,
     });
 
-    // if openId = empty or different from id, open the click one (id) otherwise close it
+    //* if openId = empty or different from id, open the click one (id) otherwise close it
     openId === "" || openId !== id ? open(id) : close();
   };
 
@@ -68,8 +70,9 @@ const Toggle = ({ id }) => {
 const List = ({ id, children }) => {
   const { openId, position, close } = useContext(MenusContext);
 
-  const ref = useOutsideClick(close);
-  // Render list if openId equal to id otherwise return nothing
+  const ref = useOutsideClick(close, false);
+
+  //* Render list if openId equal to id otherwise return nothing
   if (openId !== id) {
     return null;
   }

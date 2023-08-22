@@ -1,4 +1,3 @@
-import Uploader from "../../data/Uploader";
 import Logo from "../logo/Logo";
 import MainNav from "../mainNav/MainNav";
 
@@ -9,8 +8,6 @@ const Sidebar = () => {
     <StyledSidebar>
       <Logo />
       <MainNav />
-
-      <Uploader />
     </StyledSidebar>
   );
 };

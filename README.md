@@ -2,8 +2,8 @@
 
 <div align='center'>
 
-![GitHub forks](https://img.shields.io/github/forks/Mel-TB/Bnb-project-dashboard?label=Fork&style=for-the-badge&color=%2378909C)
-![GitHub Repo stars](https://img.shields.io/github/stars/Mel-TB/Bnb-project-dashboard?label=Stars&style=for-the-badge&color=%2378909C)
+![GitHub forks](https://img.shields.io/github/forks/Mel-TB/La-Maison-Dashboard?label=Fork&style=for-the-badge&color=%2378909C)
+![GitHub Repo stars](https://img.shields.io/github/stars/Mel-TB/La-Maison-Dashboard?label=Stars&style=for-the-badge&color=%2378909C)
 
 ![Linkedin]
 

@@ -21,7 +21,7 @@
 
 <details>
 
-<summary>Tips for collapsed sections</summary>
+<summary>Table of Contents</summary>
 
 1. [About The Project](#about-the-project)
    - [Built With](#built-with)
